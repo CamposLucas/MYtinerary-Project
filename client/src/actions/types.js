@@ -1,0 +1,7 @@
+export const GET_CITIES = 'GET_CITIES';
+export const CITIES_LOADING = 'CITIES_LOADING';
+export const GET_ITINERARIES = 'GET_ITINERARIES';
+export const GET_ACTIVITIES = 'GET_ACTIVITIES';
+export const ACT_LOADING = 'ACT_LOADING';
+export const NO_ITINERARIES = 'NO_ITINERARIES';
+export const POST_USER = 'POST_USER';

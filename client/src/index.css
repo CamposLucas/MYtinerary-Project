@@ -1,0 +1,366 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-width: 350px;
+}
+
+input {
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+p, h1, h2, h3, h4 {
+  font-family: 'Oswald', sans-serif;
+  text-align: center;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+#menu {
+  display: flex;
+  justify-content: space-between;
+}
+
+#menu i{
+  font-size: 30px;
+}
+
+#header {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+#header img {
+  width: 100%;
+}
+
+#header p {
+  text-align: center;
+  margin: 0.5em 3em 3em 3em;
+  font-weight: 100;
+}
+
+#browsing {
+  text-align: center;
+  margin-bottom: 3em;
+}
+
+#browsing img {
+  width: 100px;
+}
+
+#subtitle {
+  text-align: center;
+  margin-bottom: 0.7em;
+}
+/* Estilos del carrousel */
+
+#carousel-image {
+  position: relative;
+  width: 48%;
+  height: 180px;
+  float: left;
+  margin-left: 1.4%;
+  margin-bottom: 0.5em;
+  overflow: hidden;
+}
+
+#carousel-image img{
+  width: 200%;
+}
+
+#carousel-image p {
+  position: absolute;
+  top: 40% !important;
+  left: auto;
+  right: auto;
+  bottom: auto;
+  width: 100%;
+  line-height: 40px;
+  font-size: 20px;
+  color: white;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+#carousel-image .carousel-caption h3 {
+  font-size: 20px;
+}
+
+.d-none {
+  display: block!important;
+}
+
+/* Estilos de pagina Cities */
+.citiesContainer {
+  text-align: center;
+}
+
+.citieList {
+  display: inline-block;
+  position: relative;
+  width: 98%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.citieList img {
+  width: 100%;
+}
+
+.citieList p {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  width: 100%;
+  line-height: 50px;
+  font-size: 20px;
+  position: absolute;
+  top: 37.5%;
+}
+
+#filtro {
+  text-align: center;
+}
+
+/* Estilos de itinerarios */
+.itineraryContainer {
+  text-align: center;
+}
+
+#banner {
+  display: inline-block;
+  width: 98%;
+  position: relative;
+  overflow: hidden;
+  height: 200px;
+  margin-bottom: 2em;
+}
+
+#bannerImg{
+  width: 100%;
+}
+
+#title {
+  width: 100%;
+  line-height: 60px;
+  position: absolute;
+  top: 35%;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+#itinerary {
+  display: inline-block;
+  background: rgb(241, 241, 241);
+  width: 98%;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  border-radius: 5px;
+  margin-top: 0.5em;
+}
+
+#itinerary p, h4 {
+  text-align: left;
+}
+
+#subtitle {
+  text-align: left;
+  margin-left: 0.5em;
+}
+
+#divImg {
+  margin-top: 0.8em;
+  margin-left: 0.2em;
+  width: 25%;
+  float: left;
+}
+
+#profilePic {
+  width: 80px;
+  height: 80px;
+  float: left;
+  border-radius: 50%;
+}
+
+#itineraryInfo {
+  margin-top: 0.5em;
+  width: 72%;
+  float: right;
+}
+
+#itineraryInfo h4{
+  text-align: left;
+}
+
+
+#feedback {
+  display: flex;
+  justify-content: space-between;
+  margin-right: 0.5em;
+}
+
+#buttonCollapse p{
+  text-align: center;
+  cursor: pointer;
+}
+
+.viewAllBut {
+  background: grey;
+  margin: 0.5em;
+  padding: 0.5em;
+  color: rgb(255, 255, 255);
+}
+
+#carrouselAct .carousel-item {
+  height: 200px;  
+}
+
+#carrouselAct .carousel-item img {
+  width: 105%;
+}
+
+#carrouselAct {
+  margin:  0 0.5em 0.5em 0.5em;
+  text-align: left;
+}
+
+#carrouselAct .carousel-caption {
+  position: absolute !important;
+  bottom: 0 !important;
+  left: auto;
+  right: auto;
+  width: 100%;
+  padding: 0;
+  line-height: 30px;
+  font-size: 20px;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+
+}
+
+.carousel-indicators {
+  display: none;
+}
+
+#comments {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  padding: 0 0.2em ;
+  margin-top: 0.5em;
+}
+
+#commentInput {
+  width: 60%;
+  margin-top: 1em;
+  margin-left: 0;
+  border-radius: 4px;
+  border: 0.5px solid rgb(158, 158, 158);
+}
+
+
+input[type="submit"] {
+  color: white;
+  background: rgb(11, 100, 173);
+  border: none;
+  padding: 0.2em 0.7em 0.2em 0.7em;
+  cursor: pointer;
+}
+
+.comment {
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  text-align: left !important;
+  padding: 0.3em;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+#noItinerary {
+  line-height: 200px;
+  font-size: 25px;
+  border: 1px solid black;
+  background: rgb(207, 203, 203);
+  margin: 1em;
+}
+
+/* Estilos de create-account */
+.create-form {
+  margin-top: 2em;
+  width: 100%;
+}
+
+.create-form label {
+  margin-left: 0.5em;
+  width: 24%;
+}
+
+.create-form input[type="text"],.create-form input[type="password"],.create-form input[type="email"] {
+  width: 60%;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+}
+
+.create-form input[type="submit"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.create-form select {
+  width: 40%;
+  margin-left: 1em;
+  margin-bottom: 1em;
+}
+
+.add-photo {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1em;
+  border-radius: 50%;
+  width: 110px;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  line-height: 100px;
+  height: 110px;
+  text-align: center;
+}
+
+.conditions p{
+  display: inline-block;
+  margin-left: 1em;
+}
+
+.create-form input[type="submit"]:disabled {
+  background: rgba(11, 100, 173, 0.5);
+}
+
+.validateSpan {
+  display: block;
+  text-align: right;
+  margin-top: -1em;
+  margin-bottom: 1em;
+  margin-right: 3em;
+  color: red;
+  font-size: 15px;
+}
+
+
+/* Estilos Login */
+.loginDiv form {
+  margin-top: 2em;
+}
+.loginDiv label{
+  margin-left: 0.5em;
+  width: 24%;
+}
+
+.loginDiv input[type="text"], .loginDiv input[type="password"]{
+  margin-left: 0.5em;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  width: 60%;
+}
+
+.loginDiv input[type="submit"] {
+  display: block;
+  padding: 0.5em 1em;
+  margin: 0 auto;
+}

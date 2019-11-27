@@ -1,0 +1,50 @@
+[33mcommit 889ad642f0553b1ab70f9d1945ed2e5982ec9509[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Merge: 855ca09 7df1a1c
+Author: CamposLucas <crismvalverde@gmail.com>
+Date:   Wed Nov 6 08:34:20 2019 -0300
+
+    Merge branch 'master' of https://github.com/CamposLucas/mytinerary-project-back
+
+[33mcommit 855ca096e9df08c5d9dde89cb72ee1b2a86f4e5e[m
+Author: CamposLucas <crismvalverde@gmail.com>
+Date:   Wed Nov 6 08:34:12 2019 -0300
+
+    Se hace pull
+
+[33mcommit 7df1a1c0b54de29757c565e1db57f97dd1d4b8dd[m
+Author: CamposLucas <camposlucasr@gmail.com>
+Date:   Mon Nov 4 22:31:43 2019 -0300
+
+    se agregan imagenes y filtro de busqueda
+
+[33mcommit 26a13081074c9282d47e5f613bc6595d4562351c[m
+Author: CamposLucas <crismvalverde@gmail.com>
+Date:   Mon Nov 4 12:32:44 2019 -0300
+
+    se crea filtro
+
+[33mcommit bafa94fae8603f1f54a7b8ab805229f94f48d1ca[m
+Author: CamposLucas <crismvalverde@gmail.com>
+Date:   Mon Nov 4 12:28:30 2019 -0300
+
+    Revert "se crea filtro en cities y se comienza a agregar imagenes"
+    
+    This reverts commit 6b9408cc9a93968eb107393dfeac61edf4b6aec6.
+
+[33mcommit 6b9408cc9a93968eb107393dfeac61edf4b6aec6[m
+Author: CamposLucas <crismvalverde@gmail.com>
+Date:   Mon Nov 4 12:25:44 2019 -0300
+
+    se crea filtro en cities y se comienza a agregar imagenes
+
+[33mcommit 20e902574ff2e08b8cc1a34246c36c8dda638ff2[m
+Author: CamposLucas <Camposlucasr@gmail.com>
+Date:   Fri Nov 1 12:08:03 2019 -0300
+
+    se ordenan los archivos y se implementa Redux
+
+[33mcommit bd3fc59a9912e61971e74acf8ed81d3dbbdd9ef9[m
+Author: CamposLucas <Camposlucasr@gmail.com>
+Date:   Wed Oct 30 12:23:31 2019 -0300
+
+    se obtienen datos de BD desde componentes Cities
