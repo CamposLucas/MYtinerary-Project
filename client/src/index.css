@@ -346,21 +346,26 @@ input[type="submit"] {
 
 /* Estilos Login */
 .loginDiv form {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 .loginDiv label{
   margin-left: 0.5em;
-  width: 24%;
+  width: 20%;
 }
 
 .loginDiv input[type="text"], .loginDiv input[type="password"]{
-  margin-left: 0.5em;
+  margin-left: 0;
   border: 1px solid rgba(128, 128, 128, 0.5);
-  width: 60%;
+  width: 65%;
 }
 
 .loginDiv input[type="submit"] {
   display: block;
   padding: 0.5em 1em;
   margin: 0 auto;
+}
+
+.googleSign {
+  display: block;
+  margin: 2em auto 1em auto;
 }

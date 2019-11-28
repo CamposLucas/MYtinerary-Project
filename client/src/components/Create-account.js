@@ -38,15 +38,11 @@ class Create extends React.Component {
 
     axios.post('http://localhost:5000/users/register', user)
       .then(res => {
-        console.log(typeof res.data)
-        if (typeof(res.data === 'Object')){
-          this.setState({errors: res.data})          
-        } else if(typeof(res.data === 'string')) {
-          alert(res.data)
-        }
+        alert(res.data)
+        window.location.href = 'http://localhost:3000/login'
       })
       .catch(err => {
-        console.log(err)
+        this.setState({errors: err.response.data})
       })
   }
 

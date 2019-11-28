@@ -13,13 +13,13 @@ router.post("/register", (req,res) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   if(!isValid) {
     
-    return res.send(errors)
+    return res.status(400).json(errors)
 
   } else {
     user.findOne({email: req.body.email})
     .then(user => {
       if (user) {
-        return res.send("Email already exists");
+        return res.status(400).json({'email':"email already exist!"});
       } else {
         const newUser = new userModel({
           profilePic: req.body.picture,
@@ -39,7 +39,7 @@ router.post("/register", (req,res) => {
               newUser.password = hash;
               newUser.save()
               .then(u => {
-                res.send("usuario creado correctamente")
+                res.status(200).send("You are registred now!")
               })
               .catch(e => {
                 res.status(500).send("serverError")
