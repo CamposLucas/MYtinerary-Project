@@ -4,4 +4,6 @@ export const GET_ITINERARIES = 'GET_ITINERARIES';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES';
 export const ACT_LOADING = 'ACT_LOADING';
 export const NO_ITINERARIES = 'NO_ITINERARIES';
-export const POST_USER = 'POST_USER';
+export const USER_LOADING = "USER_LOADING";
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const GET_ERRORS = "GET_ERRORS";
