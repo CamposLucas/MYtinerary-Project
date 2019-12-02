@@ -5,10 +5,6 @@ import GoogleButton from 'react-google-button';
 
 import {withRouter} from 'react-router-dom';
 
-import axios from 'axios';
-import setAuthToken from './setAuthToken';
-import jwt_decode from 'jwt-decode';
-
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/authActions';
 import PropTypes from 'prop-types'
@@ -28,15 +24,21 @@ class Login extends React.Component {
         this.signGoogle = this.signGoogle.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.auth.isAunthenticated) {
+    componentDidMount() {
+        if(this.props.auth.isAuthenticated) {
             this.props.history.push("/dashboard")
         }
-        console.log(this.props.auth)
+    }
 
+    componentWillReceiveProps(nextProps) {
+        console.log(nextProps.auth.isAuthenticated)
 
-        if(nextProps.errors) {
-            this.setState({errors: nextProps.errors})
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/dashboard")
+        }
+
+        if(nextProps.auth.errors) {
+            this.setState({errors: nextProps.auth.errors})
         }
     }
 
@@ -97,7 +99,6 @@ Login.propTypes = {
 
 const mapStateToProps = state => ({
     auth: state.auth,
-    errors: state.errors
 })
 
 export default connect(mapStateToProps, { loginUser })(withRouter(Login))

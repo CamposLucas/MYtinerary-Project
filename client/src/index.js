@@ -12,6 +12,8 @@ import Login from './components/Login';
 import Create from './components/Create-account';
 import Itineraries from './components/Itineraries';
 import Dashboard from './components/Dashboard';
+import GoogleSign from './components/GoogleSign';
+
 
 import * as serviceWorker from './serviceWorker';
 import{Provider} from 'react-redux';
@@ -32,6 +34,7 @@ const routing = (
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
             </Switch>
+            <Route path="/googleSign/:token" component={GoogleSign} />
             <Route path="/create-account" component={Create} />
             <Route path="/itineraries/:cityID" component={Itineraries} />
           </div>

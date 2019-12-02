@@ -9,7 +9,7 @@ export const loginUser = userData => dispatch => {
       const {token} = res.data;
       setAuthToken(token);
       const decoded = jwt_decode(token);
-      dispatch(setCurrentUser(decoded));
+      dispatch(setCurrentUser(decoded.userName));
   })
   .catch(err => {
     dispatch({
@@ -32,7 +32,14 @@ export const setUserLoading = () => {
   }
 }
 
+export const googleSign = (token) => dispatch => {
+  setAuthToken(token);
+  const decoded = jwt_decode(token);
+  dispatch(setCurrentUser(decoded.userName));
+}
+
 export const logoutUser = () => dispatch => {
+  console.log('logout')
   localStorage.removeItem("jwtToken");
   setAuthToken(false);
   dispatch(setCurrentUser({}));

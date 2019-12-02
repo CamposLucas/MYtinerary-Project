@@ -8,7 +8,6 @@ passport.use(new googleStrategy({
         callbackURL: 'http://localhost:5000/auth/google/redirect',
     },
     function(accessToken, refresToken, profile, cb){
-        console.log(profile)
         cb(null, profile)
     }
 ))

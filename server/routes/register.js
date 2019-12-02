@@ -1,9 +1,12 @@
 const express = require("express");
 const router = express.Router();
+
 const bcrypt = require("bcryptjs");
+
 //load models
 const userModel = require("../schemas/Users");
 let user = userModel;
+
 //load validation
 const validateRegisterInput = require("../validation/registerValidation");
 
