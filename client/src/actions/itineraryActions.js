@@ -23,4 +23,3 @@ export const getItineraries = (id) => dispatch => {
   })
 }
 
-

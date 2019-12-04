@@ -188,10 +188,28 @@ code {
   margin-top: 0.5em;
   width: 72%;
   float: right;
+  position: relative;
 }
 
 #itineraryInfo h4{
   text-align: left;
+}
+
+.icon-heart {
+  position: absolute;
+  top: 0%;
+  right: 5%;
+  font-size: 23px;
+  color: grey;
+}
+
+#icon-heart-liked {
+  position: absolute;
+  top: 0%;
+  right: 5%;
+  font-size: 23px;
+  color: rgb(226, 66, 93);
+  transition: all 100ms;
 }
 
 
@@ -370,12 +388,24 @@ input[type="submit"], .logoutButt {
   margin-top: 2em;
 }
 
+<<<<<<< HEAD
 .profilePic{
   width: 35%;
   margin: 0 auto 1.5em auto;
+=======
+.profilePic {
+  width: 40%;
+  margin: 1em auto;
+  border-radius: 50% ;
+  border: 2px solid black;
+  overflow: hidden;
+>>>>>>> 940742ec790efb769306212c1533ebbdc7695eb7
 }
 
 .profilePic img{
   width: 100%;
+<<<<<<< HEAD
   border-radius: 50%;
+=======
+>>>>>>> 940742ec790efb769306212c1533ebbdc7695eb7
 }

@@ -7,15 +7,21 @@
   "ascent": 850,
   "glyphs": [
     {
-      "uid": "3fce1eca43f917c8f23e532749abae5d",
-      "css": "user-circle-o",
-      "code": 62142,
+      "uid": "d73eceadda1f594cec0536087539afbf",
+      "css": "heart",
+      "code": 59393,
       "src": "fontawesome"
     },
     {
       "uid": "559647a6f430b3aeadbecd67194451dd",
       "css": "menu",
       "code": 61641,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "3fce1eca43f917c8f23e532749abae5d",
+      "css": "user-circle-o",
+      "code": 62142,
       "src": "fontawesome"
     }
   ]

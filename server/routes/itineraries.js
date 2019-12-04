@@ -16,4 +16,5 @@ router.get("/itinerary/:cityId", cors(), (req, res) => {
   });
 })
 
+
 module.exports = router;

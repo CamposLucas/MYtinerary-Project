@@ -8,7 +8,7 @@ let itinerarySchema = new schema({
   rating: String,
   duration: String,
   price: String,
-  hashtag: Array
+  hashtag: Array,
 }, 
 {
   collection: 'itinerary'

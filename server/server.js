@@ -9,6 +9,7 @@ const cities = require("./routes/cities");
 const itineraries = require("./routes/itineraries");
 const login = require("./routes/login");
 const googleLogin = require("./auth/authAPI");
+const likes = require("./routes/likes");
 app.use(express.json())
 
 mongoose.connect("mongodb+srv://LucasCampos:La25stone@mytinerarycluster-fdoet.mongodb.net/mytinerary?retryWrites=true&w=majority",{useNewUrlParser: true})
@@ -25,6 +26,7 @@ app.use('/', itineraries);
 app.use('/', activities);
 app.use('/users', register);
 app.use('/users', login);
+app.use('/users', likes);
 app.use('/', googleLogin);
 
 
