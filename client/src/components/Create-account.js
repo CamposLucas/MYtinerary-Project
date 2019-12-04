@@ -7,7 +7,7 @@ class Create extends React.Component {
     super()
 
     this.state={
-      picture:'',
+      picture:null,
       username: '',
       email:'',
       password:'',
@@ -30,6 +30,11 @@ class Create extends React.Component {
     this.setState({
       [event.target.name]: event.target.value
     })
+  }
+
+  imgUpload(event){
+    console.log(event.target.files[0]);
+    this.setState({picture: event.target.files[0]})
   }
 
   handleSubmit(event){
@@ -264,7 +269,8 @@ class Create extends React.Component {
         <h1>Join Mytinerary!</h1>
         <form className="create-form" onSubmit={this.handleSubmit} noValidate>
           <div className="add-photo">
-            <a href="#" onClick={this.handleClick}>add photo</a>
+            <label>Profile picture:</label>
+            <input type="file" onChange={this.imgUpload}></input>
           </div>
 
           <label for="username">Username:</label>
@@ -310,7 +316,7 @@ class Create extends React.Component {
 
           <div className="conditions">
             <input type="checkbox" name="terms" value={this.state.value} onChange={this.handleCheckbox}></input>
-            <p>I agree to MYtinerary <a href="#">terms & conditions</a></p>
+            <p>I agree to MYtinerary <a href="www.url.com">terms & conditions</a></p>
           </div>
           
           <input type="submit" value="Create account"

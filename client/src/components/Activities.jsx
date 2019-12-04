@@ -33,7 +33,6 @@ class Activity extends React.Component {
     }
 
     render(){
-        var {activities} = this.props.activity;
         return (
             <div id="carrouselAct">
                 {this.props.activity.loading ? <p>Loading...</p> : 

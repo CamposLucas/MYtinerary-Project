@@ -36,7 +36,7 @@ class CityItinerary extends React.Component {
         <Menu />
         <div className="itineraryContainer">
           <div id="banner">
-            <img src={this.state.city.img} id="bannerImg"></img>
+            <img src={this.state.city.img} id="bannerImg" alt={this.state.city.name}></img>
             <h1 id="title">{this.state.city.name}</h1>
           </div>
           <h4 id="subtitle">Available MyTineraries:</h4>
@@ -46,7 +46,7 @@ class CityItinerary extends React.Component {
                 {itineraries.map(itinerary =>
                   <div id="itinerary">
                     <div id="divImg">
-                      <img src={itinerary.profilePic} id="profilePic"></img>
+                      <img src={itinerary.profilePic} id="profilePic" alt="profile"></img>
                     </div>
                     <div id="itineraryInfo">
                       <h4>{itinerary.title}</h4>

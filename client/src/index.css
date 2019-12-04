@@ -291,8 +291,8 @@ input[type="submit"], .logoutButt {
 }
 
 .create-form label {
-  margin-left: 0.5em;
-  width: 24%;
+  margin-left: 1.2em;
+  width: 25%;
 }
 
 .create-form input[type="text"],.create-form input[type="password"],.create-form input[type="email"] {
@@ -312,16 +312,9 @@ input[type="submit"], .logoutButt {
   margin-bottom: 1em;
 }
 
-.add-photo {
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 1em;
-  border-radius: 50%;
-  width: 110px;
-  border: 1px solid rgba(128, 128, 128, 0.5);
-  line-height: 100px;
-  height: 110px;
-  text-align: center;
+.add-photo input[type="file"]{
+  font-size: 15px;
+  width: 60%;
 }
 
 .conditions p{
@@ -375,4 +368,14 @@ input[type="submit"], .logoutButt {
 
 .logoutButt {
   margin-top: 2em;
+}
+
+.profilePic{
+  width: 35%;
+  margin: 0 auto 1.5em auto;
+}
+
+.profilePic img{
+  width: 100%;
+  border-radius: 50%;
 }

@@ -23,7 +23,7 @@ class Cities extends React.Component {
   onInputChange = (event) => {
     let newlyDisplayed = this.state.initialCities;
     newlyDisplayed = newlyDisplayed.filter(city => {
-      return city.name.toLowerCase().indexOf(event.target.value.toLowerCase()) == 0;
+      return city.name.toLowerCase().indexOf(event.target.value.toLowerCase()) === 0;
     })
     this.setState({currentlyDisplayed: newlyDisplayed});
   }
@@ -41,7 +41,7 @@ class Cities extends React.Component {
           {this.props.city.loading ? <p>Loading cities...</p> : ''}
           {this.state.currentlyDisplayed.map(cities =>
             <div class="citieList">
-              <img src={cities.img}></img>
+              <img src={cities.img} alt={cities.name}></img>
               <Link to={`/itineraries/${cities._id}`}><p>{cities.name}</p></Link>
             </div>
           )}

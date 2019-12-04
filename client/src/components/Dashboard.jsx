@@ -4,10 +4,7 @@ import {connect} from 'react-redux';
 import {logoutUser} from '../actions/authActions'
 
 class Dashboard extends React.Component {
-  constructor(){
-    super();
-  }
-
+  
   componentDidMount(){
     console.log(this.props.auth.user);
   }
@@ -22,7 +19,10 @@ class Dashboard extends React.Component {
     return (
       <div>
         <Menu />
-        <h1>Welcome {user.firstName} {user.lastName}</h1>
+        <div className="profilePic">
+          {user.profilePic ? <img src={user.profilePic} alt="Not found"/> : <img src={require('../img/profiles/genericProfile.jpg')} alt="Not found"/>}
+        </div>
+        <h1>{user.firstName} {user.lastName}</h1>
         <button onClick={this.handleClick} className="logoutButt">Logout</button>
       </div>
     )

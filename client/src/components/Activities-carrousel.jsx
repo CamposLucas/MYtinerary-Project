@@ -37,7 +37,7 @@ const Carrousel = (props) => {
             onExited={() => setAnimating(false)}
             key={item.src}
         >
-            <img src={item.img} />
+            <img src={item.img} alt={item.title} />
             <CarouselCaption captionText={item.title} />
         </CarouselItem>
         );

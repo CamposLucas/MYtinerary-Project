@@ -7,7 +7,7 @@ export const getItineraries = (id) => dispatch => {
     return res.json()
   })
   .then(datos => {
-    if (datos.length == 0) {
+    if (datos.length === 0) {
       dispatch({
         type: NO_ITINERARIES
       })

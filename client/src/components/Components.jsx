@@ -12,7 +12,7 @@ export default class Image extends React.Component {
     this.state = {url:""};
   }
   render(){
-    return <img src={this.props.url}></img>
+    return <img src={this.props.url} alt="not found"></img>
   }
 }
 
