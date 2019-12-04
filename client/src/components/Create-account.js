@@ -1,6 +1,7 @@
 import React from 'react';
 import {Menu} from './Components';
 import axios from 'axios';
+import {connect} from 'react-redux'
 
 class Create extends React.Component {
   constructor(){
@@ -24,6 +25,12 @@ class Create extends React.Component {
     this.handleCheckbox = this.handleCheckbox.bind(this);
     this.handleClick = this.handleClick.bind(this);
 
+  }
+
+  componentDidMount(){
+    if(this.props.auth.isAuthenticated) {
+      this.props.history.push("/dashboard")
+    }
   }
 
   handleChange(event){
@@ -322,4 +329,8 @@ class Create extends React.Component {
   }
 }
 
-export default Create
+const mapStateToProps = (state) => ({
+  auth: state.auth
+})
+
+export default connect(mapStateToProps)(Create)

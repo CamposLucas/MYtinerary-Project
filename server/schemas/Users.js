@@ -8,7 +8,8 @@ let UserSchema = new schema({
   password: String,
   firstName: String,
   lastName: String,
-  country: String
+  country: String,
+  liked: Array
 }, 
 {
   collection: 'users'
