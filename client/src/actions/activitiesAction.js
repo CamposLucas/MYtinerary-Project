@@ -7,10 +7,18 @@ export const getActivities = (id) => async dispatch => {
       return res.json()
     })
     .then(datos => {
+      if(datos) {
         dispatch({
           type: GET_ACTIVITIES,
           payload: datos
         })
+      } else {
+        dispatch({
+          type: GET_ACTIVITIES,
+          payload: []
+        })
+      }
+        
     })
     .catch(err => {
       console.log(err)

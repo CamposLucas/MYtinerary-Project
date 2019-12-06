@@ -12,7 +12,7 @@ class Dashboard extends React.Component {
   render() {
     const {user} = this.props.auth
     return (
-      <div>
+      <div >
         <Menu />
         <div className="profilePic">
           {user.profilePic ? 

@@ -1,25 +1,36 @@
 import React from 'react';
 import {getActivities} from '../actions/activitiesAction';
+import {getComments} from '../actions/commentsActions';
 import {connect} from 'react-redux';
 import Carrousel from './Activities-carrousel';
+import axios from 'axios';
 
 class Activity extends React.Component {
     constructor(){
         super();
 
         this.state = {
-            value: '',
-            showComment: false,
+            value:'',
+            comments: [],
             activities: []
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
+
+    componentWillReceiveProps(nextProps) {
+        this.props.getComments(this.props.id);
+        this.setState({comments: nextProps.comments.comments})
+    }
+
   
     async componentDidMount(){
-       await this.props.getActivities(this.props.id)
-       this.setState({activities: this.props.activity.activities})
+        await this.props.getActivities(this.props.id)
+        this.setState({activities: this.props.activity.activities})
+
+        await this.props.getComments(this.props.id);
+        this.setState({comments: this.props.comments.comments})
 
     }
 
@@ -28,8 +39,14 @@ class Activity extends React.Component {
     }
 
     handleSubmit(event){
-        this.setState({showComment: true})
         event.preventDefault();
+
+        const data = {
+            author: this.props.auth.user.userName,
+            comment: this.state.value
+        }
+        axios.put(`http://localhost:5000/itinerary/comments/postcomment/${this.props.id}`, data)
+        this.setState({value:''})
     }
 
     render(){
@@ -39,12 +56,19 @@ class Activity extends React.Component {
                     <div>
                         <Carrousel act={this.state.activities} />
                         <div id="comments">
-                            <form onSubmit={this.handleSubmit}>
-                                <input type="text" name="comment" onChange={this.handleChange} placeholder=" add a comment..." id="commentInput"></input>
-                                <input type="submit" value="Submit"></input>
-                            </form> 
-                            {this.state.showComment ? <p className="comment">{this.state.value}</p> : ''}
-                            <p className="comment">Comentario generico</p>
+                            {this.props.auth.isAuthenticated ? 
+                                <form onSubmit={this.handleSubmit}>
+                                    <input type="text" name="comment" onChange={this.handleChange} placeholder=" add a comment..." value={this.state.value} id="commentInput"></input>
+                                    <input type="submit" value="Submit"></input>
+                                </form> :
+                                <div></div>
+                            }
+                            {this.state.comments.map(comment =>
+                                <div className="comment">
+                                    <p className="authorP">{comment.author}</p>
+                                    <p className="commentP">{comment.comment}</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 }
@@ -55,8 +79,10 @@ class Activity extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-     activity: state.activity
+     activity: state.activity,
+     comments: state.comments,
+     auth: state.auth
 });
 
 
-export default connect (mapStateToProps,{getActivities})(Activity);
+export default connect (mapStateToProps,{getActivities, getComments})(Activity);

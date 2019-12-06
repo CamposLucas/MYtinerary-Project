@@ -9,6 +9,7 @@ let itinerarySchema = new schema({
   duration: String,
   price: String,
   hashtag: Array,
+  comments: Array
 }, 
 {
   collection: 'itinerary'

@@ -72,7 +72,7 @@ class CarrouselPopular extends React.Component {
     const { activeIndex } = this.state;
 		const slides = this.state.items.map((item, index) => {
 			return (
-					<CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item.src}> 
+					<CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item._id}> 
 							{this.state.items[index].map((item) => 
 								<div id="carousel-image">
 									<Link to={`/itineraries/${item._id}`}><p>{item.name}</p></Link>

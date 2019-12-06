@@ -33,10 +33,10 @@ const routing = (
             <Route path="/login" component={Login} />
             <Switch>
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <Route path="/itineraries/:cityID" component={Itineraries} />
             </Switch>
             <Route path="/googleSign/:token" component={GoogleSign} />
             <Route path="/create-account" component={Create} />
-            <Route path="/itineraries/:cityID" component={Itineraries} />
           </div>
         </Router>
      </PersistGate>

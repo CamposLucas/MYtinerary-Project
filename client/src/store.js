@@ -7,7 +7,7 @@ import storage from 'redux-persist/lib/storage';
 const persistConfig = {
   key: 'root',
   storage,
-  blacklist: ['itinerary', 'activity']
+  blacklist: ['itinerary', 'activity', 'likes', 'comments']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

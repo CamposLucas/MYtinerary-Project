@@ -1,7 +1,7 @@
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import setAuthToken from '../components/setAuthToken';
-import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING } from './types';
+import { GET_ERRORS, SET_CURRENT_USER, USER_LOADING, GET_FAVS } from './types';
 
 export const loginUser = userData => dispatch => {
   axios.post('http://localhost:5000/users/login', userData)
