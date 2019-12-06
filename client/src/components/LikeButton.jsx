@@ -15,8 +15,11 @@ class LikeButton extends React.Component {
   }
 
    componentWillReceiveProps(props) {
-     this.props.getFavs(this.props.auth.user._id);
-      if(this.props.likes.liked.indexOf(this.props.id) !== -1) {
+      if (!props.likes.liked) {
+        this.props.getFavs(props.auth.user._id);
+      }
+
+      if(props.likes.liked.indexOf(props.id) !== -1) {
         this.setState({isLiked: true})
       } else {
         this.setState({isLiked: false})

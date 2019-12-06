@@ -13,3 +13,15 @@ export const getComments = (id) => async dispatch => {
       console.log(e)
     })
 }
+
+export const putComments = (id, data) => dispatch => {
+  axios.put(`http://localhost:5000/itinerary/comments/postcomment/${id}`, data)
+    .then(res => {
+      console.log(res.data)
+      dispatch(getComments(id));
+    })
+    .catch(e => {
+      console.log(e)
+    })
+}
+

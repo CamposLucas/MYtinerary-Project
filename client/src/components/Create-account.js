@@ -55,6 +55,7 @@ class Create extends React.Component {
       })
       .catch(err => {
         this.setState({errors: err.response.data})
+        console.log(this.state.errors)
       })
   }
 

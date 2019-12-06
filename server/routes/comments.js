@@ -16,14 +16,15 @@ router.get("/itinerary/comments/:itId", cors(), (req, res) => {
     });
 })
 
-router.put("/itinerary/comments/postcomment/:itId", cors(), (req, res) => {
-  itinerary
-    .findByIdAndUpdate(req.params.itId, {$push: {'comments': {author: req.body.author, comment: req.body.comment}}}, function(err){
+router.put("/itinerary/comments/postcomment/:itId", cors(), async (req, res) => {
+  itinerary.findByIdAndUpdate(req.params.itId, {$push: {'comments': {author: req.body.author, comment: req.body.comment}}}, function(err){
         if(err){
             return res.send(err);
         }
-        console.log({message:"comment submited"});
     })
+    const data = await itinerary.findById(req.params.itId)
+    const respuesta = data.comments 
+     res.json(respuesta);
   })
 
 

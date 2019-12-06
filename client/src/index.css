@@ -304,6 +304,10 @@ input[type="submit"], .logoutButt {
   margin-bottom: 0.3em !important;
 }
 
+.editSet {
+  float: right;
+}
+
 
 #noItinerary {
   line-height: 200px;
