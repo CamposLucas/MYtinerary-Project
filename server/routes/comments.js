@@ -27,5 +27,25 @@ router.put("/itinerary/comments/postcomment/:itId", cors(), async (req, res) => 
      res.json(respuesta);
   })
 
+router.put("/itinerary/comments/deletecomment/:itId", cors(), (req, res) => {
+  itinerary.findByIdAndUpdate(req.params.itId, {$pull: {'comments': {author: req.body.author, comment: req.body.comment}}}, function(err){
+    if(err){
+        return res.send(err);
+    }
+  })
+  // const data = await itinerary.findById(req.params.itId)
+  // const respuesta = data.comments 
+  res.json("comentario eliminado");
+})
+
+router.put("/itinerary/comments/updatecomment/:itId", cors(), (req, res) => {
+  const i = req.body.i;
+  itinerary.findByIdAndUpdate(req.params.itId, {['comments.'+i]: {author: req.body.author, comment: req.body.comment}}, function(err){
+    if(err){
+        return res.send(err);
+    }
+  })
+})
+
 
 module.exports = router;

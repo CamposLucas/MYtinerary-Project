@@ -3,6 +3,7 @@ import {getActivities} from '../actions/activitiesAction';
 import {getComments, putComments} from '../actions/commentsActions';
 import {connect} from 'react-redux';
 import Carrousel from './Activities-carrousel';
+import Comment from './Comments';
 import axios from 'axios';
 
 class Activity extends React.Component {
@@ -17,17 +18,11 @@ class Activity extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.getComments = this.getComments.bind(this)
+        this.getComments = this.getComments.bind(this);
     }
 
-    // componentDidUpdate(nextProps) {
-    //     this.props.getComments(this.props.id);
-    //     this.setState({comments: nextProps.comments.comments})
-    //     // this.setState({value: '', comments: this.props.comments.comments})
-    // }
-
-
     getComments(id){
+        console.log("gola")
         axios.get(`http://localhost:5000/itinerary/comments/${id}`)
             .then(res => {
               this.setState({comments: res.data});
@@ -36,15 +31,11 @@ class Activity extends React.Component {
                 console.log(err);
             })
     }
-
-
   
     async componentDidMount(){
         await this.props.getActivities(this.props.id)
         this.setState({activities: this.props.activity.activities})
 
-        // await this.props.getComments(this.props.id);
-        // this.setState({comments: this.props.comments.comments})
         this.getComments(this.props.id)
     }
 
@@ -59,8 +50,10 @@ class Activity extends React.Component {
             comment: this.state.value
         }
         const respuesta = await axios.put(`http://localhost:5000/itinerary/comments/postcomment/${this.props.id}`, data)
-        this.setState({comments: respuesta.data})
-        document.getElementById('commentInput').value = ''
+        // this.setState({comments: respuesta.data})
+        this.getComments(this.props.id)
+
+        this.setState({value: ''})
         
     }
 
@@ -85,17 +78,8 @@ class Activity extends React.Component {
                                 </form> :
                                 <div></div>
                             }
-                            {this.state.comments.map(comment =>
-                                <div className="comment">
-                                    <div>
-                                        <p className="authorP">{comment.author}</p>
-                                        <p className="commentP">{comment.comment}</p>
-                                    </div>
-                                    {/* <div className="editSet">
-                                        <p>Update</p>
-                                        <p>Delete</p>
-                                    </div> */}
-                                </div>
+                            {this.state.comments.map((comment, i) =>
+                                <Comment get={this.getComments} com={comment} id={this.props.id} index={i} />
                             )}
                         </div>
                     </div>
