@@ -1,5 +1,5 @@
 import React from "react";
-import {Menu} from './Components';
+import Menu from './Menu';
 import {connect} from 'react-redux';
 import {logoutUser} from '../actions/authActions'
 

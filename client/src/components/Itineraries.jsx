@@ -1,5 +1,5 @@
 import React from  'react';
-import {Menu} from './Components';
+import Menu from './Menu';
 import {connect} from 'react-redux';
 import {getItineraries} from '../actions/itineraryActions';
 import{getFavs} from '../actions/likesActions';
@@ -57,7 +57,7 @@ class CityItinerary extends React.Component {
                     </div>
                     <div id="itineraryInfo">
                       <h4>{itinerary.title}</h4>
-                      {this.props.auth.isAuthenticated ? <LikeButton id={itinerary._id}/> : <div></div>}
+                      {this.props.auth.isAuthenticated ? <LikeButton id={itinerary._id} cityId={this.props.match.params.cityID}/> : <div></div>}
                       <div id="feedback">
                         <p>Likes: {itinerary.rating}</p>
                         <p>{itinerary.duration} hours</p>

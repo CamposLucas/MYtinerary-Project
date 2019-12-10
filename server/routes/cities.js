@@ -8,10 +8,10 @@ router.get("/cities", cors(), (req, res) => {
   cities
   .find()
   .then(datos => {
-    res.json(datos)
+    res.status(200).json(datos)
   })
   .catch(err => {
-    console.log(err)
+    res.status(400).send(err)
   });
 })
 

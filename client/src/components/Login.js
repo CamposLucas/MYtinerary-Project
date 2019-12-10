@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {Menu} from './Components';
+import Menu from './Menu';
 import GoogleButton from 'react-google-button';
 
 import {withRouter} from 'react-router-dom';
@@ -69,8 +69,6 @@ class Login extends React.Component {
         <div className="loginDiv">
             <Menu />
             <h1>Log into your account</h1>
-            <GoogleButton onClick={this.signGoogle} className="googleSign" />  
-            <p>or</p>
             <form action="" onSubmit={this.handleSubmit}>
                 <label for="username">Username</label>
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
@@ -85,7 +83,9 @@ class Login extends React.Component {
                 </span>    
 
                 <input type="submit" value="Login"></input>
-            </form>         
+            </form>      
+            <p>or</p>
+            <GoogleButton onClick={this.signGoogle} className="googleSign" />     
         </div>
     )  
   }

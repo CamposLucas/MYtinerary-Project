@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {getFavs} from '../actions/likesActions';
+import {getItineraries} from '../actions/itineraryActions';
 
 class LikeButton extends React.Component {
   constructor() {
@@ -44,6 +45,7 @@ class LikeButton extends React.Component {
         console.log(res.data)
         this.props.getFavs(userId);
         this.setState({isLiked: !this.state.isLiked})
+        this.props.getItineraries(this.props.cityId);
       })
       .catch(e => {
         console.log(e.response.data)
@@ -65,4 +67,4 @@ const mapStateToProps = state => ({
   auth: state.auth
 })
 
-export default connect(mapStateToProps, {getFavs})(LikeButton);
+export default connect(mapStateToProps, {getFavs, getItineraries})(LikeButton);

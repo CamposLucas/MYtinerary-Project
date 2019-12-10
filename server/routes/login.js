@@ -17,8 +17,6 @@ router.post('/login', (req, res) => {
     return res.status(400).json(errors);
   
   } else {
-   
-    console.log(req.body);
     var userName = req.body.username;
     var password = req.body.password;
     userModel.findOne({userName: userName})
@@ -42,7 +40,6 @@ router.post('/login', (req, res) => {
                 options,
                 (err, token) => {
                   if (err) {
-                    console.log(err)
                     res.json({
                       succes: false,
                       token: 'There was an error'

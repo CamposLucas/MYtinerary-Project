@@ -24,22 +24,35 @@ router.put('/likes/postlike/:UserId/:itineraryId',cors(), function(req,res){
             var i = data.liked.indexOf(req.params.itineraryId)
             if(i === -1) {
               user.findByIdAndUpdate(req.params.UserId,{$push: {liked: req.params.itineraryId}},function(err){
-                  if(err){
-                      return res.send(err);
-                  }
-                res.send({message:"list updated"});
+                if(err){
+                  res.status(400).send(err);
+                }
               });
+              
+              itinerary.findByIdAndUpdate(req.params.itineraryId, {$inc: {"rating": 1}}, function(err){
+                if(err){
+                  res.status(400).send(err);;
+                }
+              })
+
+              res.status(200).send({message:"list updated"});
+
             } else {
               user.findByIdAndUpdate(req.params.UserId, {$pull: {liked: {$in: req.params.itineraryId}}}, function(err){
                 if(err){
-                  return res.send(err);
+                  return res.status(400).send(err);
                 }
-                res.send({message:"item eliminado"})
-              });
+              })
+              itinerary.findByIdAndUpdate(req.params.itineraryId, {$inc: {"rating": -1}}, function(err){
+                if(err){
+                  res.status(400).send(err);
+                }
+              })
+              res.status(200).send({message:"item eliminado"})
             }
         })      
         .catch(e => {
-          res.send(e);
+          res.status(400).send(e);
         })
 });
 

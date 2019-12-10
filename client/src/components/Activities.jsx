@@ -4,7 +4,6 @@ import {getComments, putComments} from '../actions/commentsActions';
 import {connect} from 'react-redux';
 import Carrousel from './Activities-carrousel';
 import Comment from './Comments';
-import axios from 'axios';
 
 class Activity extends React.Component {
     constructor(){
@@ -14,29 +13,30 @@ class Activity extends React.Component {
             value:'',
             comments: [],
             activities: [],
+            reload: false
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.getComments = this.getComments.bind(this);
     }
 
-    getComments(id){
-        console.log("gola")
-        axios.get(`http://localhost:5000/itinerary/comments/${id}`)
-            .then(res => {
-              this.setState({comments: res.data});
+
+    async componentDidUpdate(nextProps) {
+        if(nextProps.comments.comments !== this.props.comments.comments) {
+            this.setState({reload: false})
+            await this.setState({
+                comments: this.props.comments.comments
             })
-            .catch(err => {
-                console.log(err);
-            })
+            this.setState({reload: true})
+        }
     }
-  
+      
     async componentDidMount(){
         await this.props.getActivities(this.props.id)
         this.setState({activities: this.props.activity.activities})
 
-        this.getComments(this.props.id)
+        await this.props.getComments(this.props.id)
+        this.setState({comments: this.props.comments.comments, reload: true})
     }
 
     handleChange(event){
@@ -49,12 +49,10 @@ class Activity extends React.Component {
             author: this.props.auth.user.userName,
             comment: this.state.value
         }
-        const respuesta = await axios.put(`http://localhost:5000/itinerary/comments/postcomment/${this.props.id}`, data)
-        // this.setState({comments: respuesta.data})
-        this.getComments(this.props.id)
 
-        this.setState({value: ''})
-        
+        await this.props.putComments(this.props.id, data);
+
+        this.setState({value: '', comments: this.props.comments.comments, reload: true})
     }
 
     render(){
@@ -79,7 +77,10 @@ class Activity extends React.Component {
                                 <div></div>
                             }
                             {this.state.comments.map((comment, i) =>
-                                <Comment get={this.getComments} com={comment} id={this.props.id} index={i} />
+                                this.state.reload ?
+                                    <Comment get={this.getComments} com={comment} id={this.props.id} index={i} />
+                                    :
+                                    <div></div>
                             )}
                         </div>
                     </div>

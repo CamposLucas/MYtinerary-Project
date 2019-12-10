@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
+import {updateComment} from '../actions/commentsActions'
 
 class Comment extends React.Component {
     constructor(props) {
-        super();
+        super(props);
 
         this.state = {
             value:'',
@@ -23,7 +24,8 @@ class Comment extends React.Component {
             author: this.state.author,
             comment: this.state.comment
         }
-        axios.put(`http://localhost:5000/itinerary/comments/deletecomment/${this.props.id}`, data);
+        axios.put(`http://localhost:5000/itinerary/comments/deletecomment/${this.props.id}`, data)
+
         this.setState({isEliminated: true})
     }
 
@@ -42,10 +44,9 @@ class Comment extends React.Component {
             comment: this.state.value,
             i: this.state.i
         }
-        axios.put(`http://localhost:5000/itinerary/comments/updatecomment/${this.props.id}`, data)
-        
-        this.setState({toUpdate: false})
 
+        this.props.updateComment(this.props.id, data)
+        this.setState({toUpdate: false})        
     }
 
     render(){
@@ -94,4 +95,4 @@ var mapStateToProps = (state) =>({
     auth: state.auth
 })
 
-export default connect(mapStateToProps)(Comment);
+export default connect(mapStateToProps, {updateComment})(Comment);

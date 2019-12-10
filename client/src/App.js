@@ -2,8 +2,9 @@ import React from 'react';
 import './App.css';
 
 import {Link} from 'react-router-dom';
-import {Header, Menu} from './components/Components';
-import Image from './components/Components';
+import Menu from './components/Menu';
+import Header from './components/Header';
+import Image from './components/Image';
 import CarrouselPopular from './components/carrousel';
 import {connect} from 'react-redux';
 import {getCities} from './actions/cityActions'

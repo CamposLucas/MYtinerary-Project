@@ -1,7 +1,7 @@
 import {GET_COMMENTS} from '../actions/types'
 
 const initialState = {
-  comments: []
+  comments: [],
 };
 
 export default function(state = initialState, action) {
@@ -9,7 +9,7 @@ export default function(state = initialState, action) {
     case GET_COMMENTS:
       return {
         ...state,
-        comments: action.payload,
+        comments: [...action.payload],
       };
     default: 
       return state;

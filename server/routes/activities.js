@@ -9,10 +9,10 @@ router.get("/activities/:itId", cors(), (req, res) => {
   activity
   .find({"itId": req.params.itId})
   .then(data => {
-    res.json(data)
+    res.status(200).json(data)
   })
   .catch(err => {
-    console.log(err)
+    res.status(400).send(err)
   })
 })
 

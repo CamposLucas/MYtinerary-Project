@@ -5,7 +5,7 @@ let itinerarySchema = new schema({
   title: String,
   cityID: String,
   profilePic: String,
-  rating: String,
+  rating: Number,
   duration: String,
   price: String,
   hashtag: Array,
