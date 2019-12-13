@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Collapse } from 'reactstrap';
 import Activity from '../components/Activities';
+import Comment from './Comments';
 
 const ButtonCol = (props) => {
+  
   const [collapse, setCollapse] = useState(false);
   const [status, setStatus] = useState('View all');
 
@@ -15,7 +17,14 @@ const ButtonCol = (props) => {
   return (
     <div id="buttonCollapse">
       <Collapse isOpen={collapse} onEntered={onEntered} onExited={onExited}>
-        {collapse ? <Activity id={props.id} /> : ''}
+        {collapse ? 
+          <div>
+            <Activity id={props.id} /> 
+            <Comment id={props.id} />
+          </div>
+          : 
+          ''
+        }
       </Collapse>
       <p className="viewAllBut"onClick={toggle}>{status}</p>
 

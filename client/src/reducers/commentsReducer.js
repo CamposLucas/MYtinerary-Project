@@ -1,7 +1,8 @@
-import {GET_COMMENTS} from '../actions/types'
+import {GET_COMMENTS, UPDT_COMMENT} from '../actions/types'
 
 const initialState = {
   comments: [],
+  aux: false
 };
 
 export default function(state = initialState, action) {
@@ -11,6 +12,11 @@ export default function(state = initialState, action) {
         ...state,
         comments: [...action.payload],
       };
+    case UPDT_COMMENT:
+      return {
+        ...state,
+        aux: !state.aux
+      }
     default: 
       return state;
   }

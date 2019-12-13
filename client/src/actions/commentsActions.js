@@ -1,4 +1,4 @@
-import {GET_COMMENTS} from './types';
+import {GET_COMMENTS, UPDT_COMMENT} from './types';
 import axios from 'axios';
 
 export const getComments = (id) => async dispatch => {
@@ -21,6 +21,9 @@ export const putComments = (id, data) => async dispatch => {
         type: GET_COMMENTS,
         payload: res.data
       });
+      dispatch({
+        type: UPDT_COMMENT
+      })
     })
     .catch(e => {
       console.log(e)
@@ -37,6 +40,10 @@ export const updateComment = (id, data) => async dispatch => {
       type: GET_COMMENTS,
       payload: data.data
     })
+    dispatch({
+      type: UPDT_COMMENT
+    })
+  
   })
   .catch(e => {
     console.log(e)

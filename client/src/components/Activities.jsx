@@ -11,32 +11,16 @@ class Activity extends React.Component {
 
         this.state = {
             value:'',
-            comments: [],
             activities: [],
-            reload: false
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
     }
-
-
-    async componentDidUpdate(nextProps) {
-        if(nextProps.comments.comments !== this.props.comments.comments) {
-            this.setState({reload: false})
-            await this.setState({
-                comments: this.props.comments.comments
-            })
-            this.setState({reload: true})
-        }
-    }
       
     async componentDidMount(){
         await this.props.getActivities(this.props.id)
         this.setState({activities: this.props.activity.activities})
-
-        await this.props.getComments(this.props.id)
-        this.setState({comments: this.props.comments.comments, reload: true})
     }
 
     handleChange(event){
@@ -61,7 +45,7 @@ class Activity extends React.Component {
                 {this.props.activity.loading ? <p>Loading...</p> : 
                     <div>
                         <Carrousel act={this.state.activities} />
-                        <div id="comments">
+                        <div>
                             {this.props.auth.isAuthenticated ? 
                                 <form onSubmit={this.handleSubmit}>
                                     <input 
@@ -76,12 +60,7 @@ class Activity extends React.Component {
                                 </form> :
                                 <div></div>
                             }
-                            {this.state.comments.map((comment, i) =>
-                                this.state.reload ?
-                                    <Comment get={this.getComments} com={comment} id={this.props.id} index={i} />
-                                    :
-                                    <div></div>
-                            )}
+
                         </div>
                     </div>
                 }
@@ -94,6 +73,7 @@ class Activity extends React.Component {
 const mapStateToProps = (state) => ({
      activity: state.activity,
      comments: state.comments,
+     itinerary: state.itinerary,
      auth: state.auth
 });
 
