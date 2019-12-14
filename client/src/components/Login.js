@@ -3,11 +3,9 @@ import React from 'react';
 import Menu from './Menu';
 import GoogleButton from 'react-google-button';
 
-import {withRouter} from 'react-router-dom';
 
 import {connect} from 'react-redux';
 import {loginUser} from '../actions/authActions';
-import PropTypes from 'prop-types'
 
 class Login extends React.Component {
     constructor() {
@@ -70,13 +68,13 @@ class Login extends React.Component {
             <Menu />
             <h1>Log into your account</h1>
             <form action="" onSubmit={this.handleSubmit}>
-                <label for="username">Username</label>
+                <label>Username</label>
                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange}/>
                 <span className="validateSpan">
                     {this.state.errors.username}
                 </span>
 
-                <label for="password">Password</label>
+                <label>Password</label>
                 <input type="password" name="password" value={this.state.password} onChange={this.handleChange}/>
                 <span className="validateSpan">
                     {this.state.errors.password}
@@ -91,14 +89,9 @@ class Login extends React.Component {
   }
 }
 
-Login.propTypes = {
-    loginUser: PropTypes.func.isRequired,
-    auth: PropTypes.object.isRequired,
-    errors: PropTypes.object.isRequired
-  };
 
 const mapStateToProps = state => ({
     auth: state.auth,
 })
 
-export default connect(mapStateToProps, { loginUser })(withRouter(Login))
+export default connect(mapStateToProps, { loginUser })(Login)

@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {updateComment} from '../actions/commentsActions'
 import axios from 'axios';
 
 
@@ -33,7 +32,16 @@ class ShowComments extends React.Component {
             i: this.state.i
         }
 
-        this.props.updateComment(this.props.id, data)
+        await axios.put(`http://localhost:5000/itinerary/comments/updatecomment/${this.props.id}`, data)
+            .then(res => {
+                return res
+            })
+            .then(data => {
+                this.setState({comment: data.data[this.state.i]})
+            })
+            .catch(e => {
+                console.log(e)
+            })
         this.setState({toUpdate: false})        
     }
 
@@ -90,4 +98,4 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, {updateComment}) (ShowComments);
+export default connect(mapStateToProps) (ShowComments);

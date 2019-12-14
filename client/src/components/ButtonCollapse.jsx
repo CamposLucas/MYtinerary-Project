@@ -20,7 +20,7 @@ const ButtonCol = (props) => {
         {collapse ? 
           <div>
             <Activity id={props.id} /> 
-            <Comment id={props.id} />
+            <Comment id={props.id} i={props.index}/>
           </div>
           : 
           ''

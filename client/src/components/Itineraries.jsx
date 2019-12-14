@@ -50,8 +50,8 @@ class CityItinerary extends React.Component {
           <div id="itcontainer">
             {this.props.itinerary.isEmpty ? <p id="noItinerary">Nothing here</p> :
               <div> 
-                {itineraries.map(itinerary =>
-                  <div id="itinerary">
+                {itineraries.map((itinerary, i) =>
+                  <div id="itinerary" key={i}>
                     <div id="divImg">
                       <img src={itinerary.profilePic} id="profilePic" alt="profile"></img>
                     </div>
@@ -65,7 +65,7 @@ class CityItinerary extends React.Component {
                       </div>
                     </div>
                     <p>{itinerary.hashtag}</p>
-                    <ButtonCol id={itinerary._id}/>
+                    <ButtonCol id={itinerary._id} index={i}/>
                   </div>
                 )}
               </div>

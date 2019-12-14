@@ -36,12 +36,12 @@ class DDMenu extends React.Component {
             </DropdownToggle>
             :
             <DropdownToggle color="white" size='lg'>
-              <img src={this.props.icon} className="userIcon"></img>
+              <img src={this.props.icon} className="userIcon" alt="userIcon"></img>
             </DropdownToggle>
           }
           <DropdownMenu right>
             {this.props.pages.map((name, index) =>
-              <DropdownItem>
+              <DropdownItem key={index}>
                 <Link to={this.props.links[index]}>{name}</Link>
               </DropdownItem>
             )}

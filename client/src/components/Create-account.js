@@ -281,41 +281,41 @@ class Create extends React.Component {
             <input type="file" onChange={this.imgUpload}></input>
           </div>
 
-          <label for="username">Username:</label>
+          <label>Username:</label>
           <input type="text" name="username" value={this.state.username} onChange={this.handleChange}></input>
           <span className="validateSpan">
             {this.state.errors.username}
           </span>
 
-          <label for="email">Email:</label>
+          <label>">Email:</label>
           <input type="email" name="email" value={this.state.email} onChange={this.handleChange}></input>
           <span className="validateSpan">
             {this.state.errors.email}
             {this.state.errors.emailnotfound}
           </span>
 
-          <label for="password">Password:</label>
+          <label>Password:</label>
           <input type="password" name="password" value={this.state.password} onChange={this.handleChange}></input>
           <span className="validateSpan">
             {this.state.errors.password}
           </span>
 
-          <label for="firstName">First Name:</label>
+          <label>First Name:</label>
           <input type="text" name="firstName" value={this.state.firstName} onChange={this.handleChange}></input>
           <span className="validateSpan">
             {this.state.errors.firstName}
           </span>
 
-          <label for="lastName">Last Name:</label>
+          <label>Last Name:</label>
           <input type="text" name="lastName" value={this.state.lastName} onChange={this.handleChange}></input>
           <span className="validateSpan">
             {this.state.errors.lastName}
           </span>
 
-          <label for="country">Country:</label>
+          <label>Country:</label>
           <select name="country" value={this.state.value} onChange={this.handleChange}>
-            {countryList.map(country => 
-                <option value={country}>{country}</option>
+            {countryList.map((country, i) => 
+                <option value={country} key={i} >{country}</option>
               )}
           </select>
           <span className="validateSpan">

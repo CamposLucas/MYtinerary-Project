@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
-import {updateComment, getComments} from '../actions/commentsActions'
+import {getComments} from '../actions/commentsActions'
 import ShowComments from './showComments';
 
 class Comment extends React.Component {
@@ -9,22 +9,15 @@ class Comment extends React.Component {
         super(props);
 
         this.state = {
-            value:'',
+            value: '',
             comments: [],
             isEliminated: false,
             toUpdate: false,
-            reload: true
         }
 
-    }
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
 
-    async componentDidUpdate(nextProps) {
-        if(nextProps.comments.comments !== this.state.comments) {
-            this.setState({reload: false})
-            await this.props.getComments(this.props.id)
-            await this.setState({comments: this.props.comments.comments})
-            this.setState({reload: true})
-        }
     }
 
     async componentDidMount(){
@@ -32,19 +25,53 @@ class Comment extends React.Component {
         this.setState({comments: this.props.comments.comments})
     }
 
+    handleChange(event){
+        this.setState({value: event.target.value})
+    }
+
+    handleSubmit =  async (event) => {
+        event.preventDefault();
+        const data = {
+            author: this.props.auth.user.userName,
+            comment: this.state.value
+        }
+
+        await axios.put(`http://localhost:5000/itinerary/comments/postcomment/${this.props.id}`, data)
+            .then(res => {
+                this.setState({comments: res.data})
+            })
+            .catch(e => {
+                console.log(e)
+            })
+
+        this.setState({value: ''})
+    }
+
     render(){
         return (
             <div>
                 <div>
-                    {this.state.reload ? 
-                        <div>
-                            {this.state.comments.map((comment, i) => 
-                                <ShowComments com={comment} index={i} id={this.props.id} />
-                            )}
-                        </div>  
-                        :
-                        <div></div>  
-                    }
+                    <div>
+                        {this.props.auth.isAuthenticated ? 
+                            <form onSubmit={this.handleSubmit} className="editForm">
+                                <input 
+                                    type="text" 
+                                    name="comment" 
+                                    onChange={this.handleChange} 
+                                    placeholder=" add a comment..." 
+                                    value={this.state.value} 
+                                    className="commentInput">    
+                                </input>
+                                <input type="submit" value="Submit"></input>
+                            </form> :
+                            <div></div>
+                        }
+                    </div>
+                    <div>
+                        {this.state.comments.map((comment, i) => 
+                            <ShowComments com={comment} index={i} id={this.props.id} key={i} />
+                        )}
+                    </div>  
                 </div>
             </div>
         )
@@ -56,4 +83,4 @@ var mapStateToProps = (state) =>({
     comments: state.comments
 })
 
-export default connect(mapStateToProps, {updateComment, getComments})(Comment);
+export default connect(mapStateToProps, {getComments})(Comment);

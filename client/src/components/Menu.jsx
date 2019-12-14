@@ -3,11 +3,7 @@ import {connect} from 'react-redux';
 import DDMenu from './DDMenu';
 
 
-class Menu extends React.Component{
-  constructor(){
-    super();
-  }
-  
+class Menu extends React.Component{  
   render(){
     return (
       <div id="menu">

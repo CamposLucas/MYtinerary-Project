@@ -30,12 +30,12 @@ const Carrousel = (props) => {
         setActiveIndex(newIndex);
     }
 
-    const slides = items.map((item) => {
+    const slides = items.map((item, index) => {
         return (
         <CarouselItem
             onExiting={() => setAnimating(true)}
             onExited={() => setAnimating(false)}
-            key={item.src}
+            key={index}
         >
             <img src={item.img} alt={item.title} />
             <CarouselCaption captionText={item.title} />

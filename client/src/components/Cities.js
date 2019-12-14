@@ -39,8 +39,8 @@ class Cities extends React.Component {
         </div>
         <div className="citiesContainer">
           {this.props.city.loading ? <p>Loading cities...</p> : ''}
-          {this.state.currentlyDisplayed.map(cities =>
-            <div className="citieList">
+          {this.state.currentlyDisplayed.map((cities, i) =>
+            <div className="citieList" key={i}>
               <img src={cities.img} alt={cities.name}></img>
               <Link to={`/itineraries/${cities._id}`}><p>{cities.name}</p></Link>
             </div>

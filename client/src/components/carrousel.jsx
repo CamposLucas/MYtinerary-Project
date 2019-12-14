@@ -39,7 +39,6 @@ class CarrouselPopular extends React.Component {
 
       aux = [];
     }
-    console.log(itemsAux);
 		this.setState({items: itemsAux});
 	}
 
@@ -72,9 +71,9 @@ class CarrouselPopular extends React.Component {
     const { activeIndex } = this.state;
 		const slides = this.state.items.map((item, index) => {
 			return (
-					<CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={item._id}> 
-							{this.state.items[index].map((item) => 
-								<div id="carousel-image">
+					<CarouselItem onExiting={this.onExiting} onExited={this.onExited} key={index}> 
+							{this.state.items[index].map((item, i) => 
+								<div id="carousel-image" key={i}>
 									<Link to={`/itineraries/${item._id}`}><p>{item.name}</p></Link>
 									<img src={item.img} alt={item.altText} width="100%"/>
 								</div>
