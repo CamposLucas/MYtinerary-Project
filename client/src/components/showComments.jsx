@@ -81,7 +81,7 @@ class ShowComments extends React.Component {
                             <p className="authorP">{this.state.comment.author}</p>
                             <p className="commentP">{this.state.comment.comment}</p>
                         </div>
-                            {this.props.auth.user.email === this.state.comment.author ?
+                            {this.props.auth.user.userName === this.state.comment.author ?
                                 <div className="editSet">
                                     <p onClick={this.handleUpdate}>Update</p>
                                     <p onClick={this.handleDelete}>Delete</p>
